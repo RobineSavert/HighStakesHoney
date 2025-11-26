@@ -1,0 +1,32 @@
+# Node & build artifacts
+node_modules
+dist
+build
+coverage
+
+# Dependency locks & environment
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.env
+.env.*
+
+# IDE & config files
+.vscode
+.idea
+
+# Logs & misc
+*.log
+.DS_Store
+
+# Output & generated code
+/public
+/**/*.min.*
+/**/*.bundle.*
+/**/*.map
+
+# TypeScript build output
+*.tsbuildinfo
+
+# Ignore compiled or external scripts
+/vendor
