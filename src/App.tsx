@@ -1,69 +1,56 @@
-import { useEffect, useState } from 'react';
-import CardGrid from './components/CardGrid';
-import Reveal from './components/Reveal';
-import Tutorial from './components/Tutorial';
-import { reorderTrick } from './components/TrickEngine';
-import { useDeckStore } from './stores/useDeckStore';
-import type { Card } from './stores/useDeckStore';
-import Loading from './components/Loading.tsx';
+import { useWizardStore } from './stores/useWizardStore';
+import FullScreenMessage from './components/FullScreenMessage';
+import ColumnsStep from './components/ColumnsStep';
+import RevealScreen from './components/RevealScreen';
 
 export default function App() {
-  const { cards, fetchDeck, setCards, loading, reset } = useDeckStore();
+  const step = useWizardStore((s) => s.step);
 
-  const [step, setStep] = useState<number>(1);
-  const [round, setRound] = useState<number>(1);
-  const [finalCard, setFinalCard] = useState<Card | null>(null);
-  const [showTutorial, setShowTutorial] = useState<boolean>(false);
+  switch (step) {
+    case 1:
+      return (
+        <FullScreenMessage
+          title="Welcome!"
+          text="Please pick a column to begin the trick."
+          button="Let's play"
+          nextStep={2}
+          fetchOnClick={true}
+        />
+      );
 
-  useEffect(() => {
-    fetchDeck();
-  }, []);
+    case 2:
+      return <ColumnsStep stepNumber={2} />; // 1st pick
 
-  function handleColumnChoice(colIndex: number) {
-    const newOrder = reorderTrick(cards, colIndex);
+    case 3:
+      return (
+        <FullScreenMessage
+          title="Good choice!"
+          text="Which column holds your card now?"
+          button="Continue"
+          nextStep={4}
+        />
+      );
 
-    if (round === 3) {
-      setFinalCard(newOrder[10]);
-      setCards(newOrder);
-      setStep(2);
-      return;
-    }
+    case 4:
+      return <ColumnsStep stepNumber={4} />; // 2nd pick
 
-    setRound((prev) => prev + 1);
-    setCards(newOrder);
+    case 5:
+      return (
+        <FullScreenMessage
+          title="Almost there!"
+          text="Pick the column where your card is now."
+          button="Continue"
+          nextStep={6}
+        />
+      );
+
+    case 6:
+      return <ColumnsStep stepNumber={6} />; // 3rd pick
+
+    case 7:
+      return <RevealScreen />;
+
+    default:
+      return null;
   }
-
-  function playAgain() {
-    setStep(1);
-    setRound(1);
-    setFinalCard(null);
-    reset();
-  }
-
-  return (
-    <div className="relative min-h-screen">
-      <div className="absolute inset-0 bg-gray-600"></div>
-
-      <div className="relative z-10" style={{ filter: showTutorial ? 'blur(4px)' : 'none' }}>
-        <button
-          onClick={() => setShowTutorial(true)}
-          className="fixed top-5 right-5 flex h-10 w-10 items-center justify-center rounded-full bg-red-900 text-xl text-white shadow-lg transition hover:bg-pink-700"
-        >
-          ?
-        </button>
-
-        {loading && <Loading />}
-
-        {!loading && step === 1 && <CardGrid cards={cards} onChooseColumn={handleColumnChoice} />}
-
-        {step === 2 && finalCard && <Reveal card={finalCard} onRestart={playAgain} />}
-      </div>
-
-      {showTutorial && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center">
-          <Tutorial onClose={() => setShowTutorial(false)} />
-        </div>
-      )}
-    </div>
-  );
 }

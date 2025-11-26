@@ -1,27 +1,27 @@
 import { create } from 'zustand';
-import { parseCardCode, mapCardToImage } from '../utils/cardMapping';
-
-export interface Card {
-  code: string;
-  image: string;
-  rank: string;
-  suit: 'hearts' | 'spades' | 'clubs' | 'diamonds';
-}
+import type { CardData } from '../types/CardData';
+import { mapCardToImage } from '../utils/cardMapping';
 
 interface DeckState {
-  cards: Card[];
+  cards: CardData[];
   loading: boolean;
+
+  finalCard: CardData | null;
+  pickCount: number;
+
   fetchDeck: () => Promise<void>;
-  setCards: (cards: Card[]) => void;
-  reset: () => Promise<void>;
+  processColumnSelection: (columnIndex: number) => void;
+  reset: () => void;
 }
 
-export const useDeckStore = create<DeckState>((set) => ({
+export const useDeckStore = create<DeckState>((set, get) => ({
   cards: [],
   loading: false,
+  finalCard: null,
+  pickCount: 0,
 
   fetchDeck: async () => {
-    set({ loading: true });
+    set({ loading: true, pickCount: 0 });
 
     const deckRes = await fetch(
       'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
@@ -31,25 +31,60 @@ export const useDeckStore = create<DeckState>((set) => ({
       `https://deckofcardsapi.com/api/deck/${deckRes.deck_id}/draw/?count=21`
     ).then((r) => r.json());
 
-    set({
-      cards: drawRes.cards.map((c: any) => {
-        const { rank, suit } = parseCardCode(c.code);
+    const customCards = drawRes.cards.map((c: any) => ({
+      code: c.code,
+      image: mapCardToImage(c.code),
+      value: c.value,
+      suit: c.suit,
+    }));
 
-        return {
-          code: c.code,
-          rank,
-          suit,
-          image: mapCardToImage(c.code),
-        };
-      }),
+    set({
+      cards: customCards,
       loading: false,
+      finalCard: null,
+      pickCount: 0,
     });
   },
 
-  setCards: (cards) => set({ cards }),
+  processColumnSelection: (columnIndex) => {
+    const { cards, pickCount } = get();
+    const columns: CardData[][] = [[], [], []];
+    cards.forEach((card, i) => columns[i % 3].push(card));
 
-  reset: async () => {
-    set({ cards: [] });
-    await useDeckStore.getState().fetchDeck();
+    let newOrder: CardData[];
+    if (columnIndex === 0) {
+      newOrder = [...columns[1], ...columns[0], ...columns[2]];
+    } else if (columnIndex === 1) {
+      newOrder = [...columns[0], ...columns[1], ...columns[2]];
+    } else {
+      newOrder = [...columns[0], ...columns[2], ...columns[1]];
+    }
+
+    const newPickCount = pickCount + 1;
+
+    if (newPickCount < 3) {
+      set({
+        cards: newOrder,
+        pickCount: newPickCount,
+        finalCard: null,
+      });
+      return;
+    }
+
+    const finalCard = newOrder[10];
+
+    set({
+      cards: newOrder,
+      finalCard,
+      pickCount: 0,
+    });
   },
+
+  reset: () =>
+    set({
+      cards: [],
+      finalCard: null,
+      loading: false,
+      pickCount: 0,
+    }),
 }));
