@@ -10,6 +10,6 @@ A Vite + React + TypeScript card game for the bold ones!
 
 # Screenshot
 
-![Preview](assets/images/highstakeshoney.webp)
+![Preview](https://github.com/RobineSavert/HighStakesHoney/blob/main/src/assets/images/highstakeshoney.webp)
 
 # ENJOY
