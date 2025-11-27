@@ -20,68 +20,6 @@ export default function HomeScreen({ button, nextStep, fetchOnClick = false }: P
   const setStep = useWizardStore((s) => s.setStep);
 
   return (
-    // <div
-    //     className="relative h-dvh w-full bg-repeat bg-center bg-size-[30px]"
-    //     style={{ backgroundImage: `url(${stripes})` }}
-    // >
-    //     <img
-    //         src={shoes}
-    //         alt=""
-    //         className="absolute right-0 top-1/2 -translate-y-1/2"
-    //     />
-    //
-    //     <img
-    //         src={cornerSuitSpades}
-    //         alt=""
-    //         className="absolute left-6 top-6"
-    //     />
-    //
-    //     <img
-    //         src={cornerSuitDiamonds}
-    //         alt=""
-    //         className="absolute right-6 top-6 w-10"
-    //     />
-    //
-    //     <img
-    //         src={cornerSuitClubs}
-    //         alt=""
-    //         className="absolute left-6 bottom-6 w-10"
-    //     />
-    //
-    //     <img
-    //         src={cornerSuitHearts}
-    //         alt=""
-    //         className="absolute right-6 bottom-6 w-10"
-    //     />
-    //
-    //     <img
-    //         src={cards}
-    //         alt=""
-    //         className="absolute left-[15%] top-[50%] -translate-y-1/2 w-[280px]"
-    //     />
-    //
-    //     <img
-    //         src={text}
-    //         alt=""
-    //         className="absolute right-[10%] bottom-[10%] -translate-y-1/2 w-[380px]"
-    //     />
-    //
-    //
-    //
-    //     <button
-    //         onClick={() => {
-    //             if (fetchOnClick) {
-    //                 const fetchDeck = useDeckStore.getState().fetchDeck;
-    //                 fetchDeck();
-    //             }
-    //             setStep(nextStep);
-    //         }}
-    //         className="absolute left-1/2 bottom-20 -translate-x-1/2 animate-popIn rounded-xl bg-black px-5 py-3 text-base uppercase opacity-0 sm:text-lg"
-    //     >
-    //         {button}
-    //     </button>
-    // </div>
-
     <div
       className="relative flex h-dvh w-full overflow-hidden"
       style={{ backgroundImage: `url(${stripes})` }}
