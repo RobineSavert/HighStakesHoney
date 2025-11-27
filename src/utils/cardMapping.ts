@@ -35,5 +35,5 @@ export function parseCardCode(code: string) {
 
 export function mapCardToImage(code: string): string {
   const { rank, suit } = parseCardCode(code);
-  return `/src/assets/cards/${rank}-${suit}.webp`;
+  return `/src/assets/images/cards/${rank}-${suit}.webp`;
 }

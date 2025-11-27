@@ -18,12 +18,10 @@ export default function ColumnsStep({ stepNumber }: Props) {
   const columns = splitIntoColumns(cards);
   const imagesLoaded = useImagesLoaded(cards.map((c) => c.image));
 
-  // --- LOADING ---
   if (loading || cards.length === 0 || !imagesLoaded) {
     return <Loading />;
   }
 
-  // --- CLICK HANDLER ---
   function handleClick(colIndex: number) {
     processColumnSelection(colIndex);
 
@@ -32,7 +30,6 @@ export default function ColumnsStep({ stepNumber }: Props) {
     else if (stepNumber === 6) setStep(7);
   }
 
-  // --- UI ---
   return (
     <div className="flex min-h-screen flex-col items-center justify-center text-black">
       <div className="flex gap-10">
@@ -42,7 +39,7 @@ export default function ColumnsStep({ stepNumber }: Props) {
             onClick={() => handleClick(colIndex)}
             className="flex cursor-pointer flex-col items-center gap-3 rounded-xl p-4 transition hover:scale-105 hover:bg-white/5"
           >
-            <div className="mb-2 text-xs text-black/60">Column {colIndex + 1}</div>
+            <div className="mb-2 text-xs uppercase text-black/60">Column {colIndex + 1}</div>
 
             {col.map((card) => (
               <PlayingCard key={card.code} card={card} />
