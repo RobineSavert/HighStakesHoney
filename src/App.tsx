@@ -2,6 +2,7 @@ import { useWizardStore } from './stores/useWizardStore';
 import FullScreenMessage from './components/FullScreenMessage';
 import ColumnsStep from './components/ColumnsStep';
 import RevealScreen from './components/RevealScreen';
+import bgStripes from './assets/images/bg-stripes.webp';
 
 export default function App() {
   const step = useWizardStore((s) => s.step);
@@ -10,10 +11,11 @@ export default function App() {
     case 1:
       return (
         <FullScreenMessage
-          title="Welcome!"
-          text="Please pick a column to begin the trick."
-          button="Let's play"
+          title="Ready to begin?"
+          text="Pick a card from one of the columns.."
+          button="Start"
           nextStep={2}
+          backgroundImage={bgStripes}
           fetchOnClick={true}
         />
       );
@@ -28,6 +30,7 @@ export default function App() {
           text="Which column holds your card now?"
           button="Continue"
           nextStep={4}
+          backgroundImage={bgStripes}
         />
       );
 
@@ -41,6 +44,7 @@ export default function App() {
           text="Pick the column where your card is now."
           button="Continue"
           nextStep={6}
+          backgroundImage={bgStripes}
         />
       );
 
