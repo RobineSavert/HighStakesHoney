@@ -5,10 +5,8 @@ import { mapCardToImage } from '../utils/cardMapping';
 interface DeckState {
   cards: CardData[];
   loading: boolean;
-
   finalCard: CardData | null;
   pickCount: number;
-
   fetchDeck: () => Promise<void>;
   processColumnSelection: (columnIndex: number) => void;
   reset: () => void;

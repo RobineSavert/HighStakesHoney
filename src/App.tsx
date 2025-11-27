@@ -24,7 +24,7 @@ export default function App() {
       );
 
     case 2:
-      return <ColumnsStep stepNumber={2} />; // 1st pick
+      return <ColumnsStep stepNumber={2} />;
 
     case 3:
       return (
@@ -38,7 +38,7 @@ export default function App() {
       );
 
     case 4:
-      return <ColumnsStep stepNumber={4} />; // 2nd pick
+      return <ColumnsStep stepNumber={4} />;
 
     case 5:
       return (
@@ -52,7 +52,7 @@ export default function App() {
       );
 
     case 6:
-      return <ColumnsStep stepNumber={6} />; // 3rd pick
+      return <ColumnsStep stepNumber={6} />;
 
     case 7:
       return <RevealScreen />;

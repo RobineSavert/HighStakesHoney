@@ -3,10 +3,8 @@ import { create } from 'zustand';
 interface WizardState {
   step: number;
   setStep: (step: number) => void;
-
   firstPick: number | null;
   secondPick: number | null;
-
   setFirstPick: (col: number) => void;
   setSecondPick: (col: number) => void;
 }

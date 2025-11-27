@@ -2,15 +2,12 @@ const cardFiles = import.meta.glob('../assets/images/cards/*.webp', {
   eager: true,
 });
 
-// This will hold something like:
-// { "ace-spades": "/assets/ace-spades.124abc.webp", ... }
 const cardImages: Record<string, string> = {};
 
 for (const path in cardFiles) {
   const file = cardFiles[path] as any;
 
   const filename = path.split('/').pop()!.replace('.webp', '');
-  // filename = "ace-spades"
 
   cardImages[filename] = file.default;
 }
@@ -52,7 +49,7 @@ export function parseCardCode(code: string) {
 
 export function mapCardToImage(code: string) {
   const { rank, suit } = parseCardCode(code);
-  const key = `${rank}-${suit}`; // e.g. "queen-spades"
+  const key = `${rank}-${suit}`;
 
   return cardImages[key];
 }
