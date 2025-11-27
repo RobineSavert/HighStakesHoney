@@ -1,13 +1,16 @@
 import { useWizardStore } from './stores/useWizardStore';
+import HomeScreen from './components/HomeScreen';
 import FullScreenMessage from './components/FullScreenMessage';
 import ColumnsStep from './components/ColumnsStep';
 import RevealScreen from './components/RevealScreen';
-import bgStripes from './assets/images/bg-stripes.webp';
+import bgStripes from './assets/images/stripes.webp';
 
 export default function App() {
   const step = useWizardStore((s) => s.step);
 
   switch (step) {
+    case 0:
+      return <HomeScreen button="lets go" nextStep={1} />;
     case 1:
       return (
         <FullScreenMessage

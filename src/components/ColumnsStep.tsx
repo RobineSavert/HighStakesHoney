@@ -44,10 +44,7 @@ export default function ColumnsStep({ stepNumber }: Props) {
             </div>
 
             {col.map((card) => (
-              <PlayingCard
-                key={card.code}
-                card={card}
-              />
+              <PlayingCard key={card.code} card={card} />
             ))}
           </div>
         ))}

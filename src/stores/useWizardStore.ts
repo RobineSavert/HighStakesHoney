@@ -12,7 +12,7 @@ interface WizardState {
 }
 
 export const useWizardStore = create<WizardState>((set) => ({
-  step: 1,
+  step: 0,
   setStep: (step) => set({ step }),
 
   firstPick: null,
