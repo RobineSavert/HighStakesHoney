@@ -3,7 +3,7 @@ import { splitIntoColumns } from '../utils/TrickEngine';
 import { PlayingCard } from './PlayingCard';
 import { useWizardStore } from '../stores/useWizardStore';
 import { useImagesLoaded } from '../hooks/useImagesLoaded';
-import Loading from './Loading.tsx';
+import Loading from './Loading';
 
 interface Props {
   stepNumber: number;
@@ -14,13 +14,16 @@ export default function ColumnsStep({ stepNumber }: Props) {
   const loading = useDeckStore((s) => s.loading);
   const processColumnSelection = useDeckStore((s) => s.processColumnSelection);
   const setStep = useWizardStore((s) => s.setStep);
+
   const columns = splitIntoColumns(cards);
   const imagesLoaded = useImagesLoaded(cards.map((c) => c.image));
 
+  // --- LOADING ---
   if (loading || cards.length === 0 || !imagesLoaded) {
     return <Loading />;
   }
 
+  // --- CLICK HANDLER ---
   function handleClick(colIndex: number) {
     processColumnSelection(colIndex);
 
@@ -29,19 +32,24 @@ export default function ColumnsStep({ stepNumber }: Props) {
     else if (stepNumber === 6) setStep(7);
   }
 
+  // --- UI ---
   return (
-    <div className="flex min-h-screen items-center justify-center gap-10 opacity-100 transition-opacity duration-500">
-      {columns.map((col, colIndex) => (
-        <div
-          key={colIndex}
-          className="flex cursor-pointer flex-col gap-3"
-          onClick={() => handleClick(colIndex)}
-        >
-          {col.map((card) => (
-            <PlayingCard key={card.code} card={card} />
-          ))}
-        </div>
-      ))}
+    <div className="flex min-h-screen flex-col items-center justify-center text-black">
+      <div className="flex gap-10">
+        {columns.map((col, colIndex) => (
+          <div
+            key={colIndex}
+            onClick={() => handleClick(colIndex)}
+            className="flex cursor-pointer flex-col items-center gap-3 rounded-xl p-4 transition hover:scale-105 hover:bg-white/5"
+          >
+            <div className="mb-2 text-xs text-black/60">Column {colIndex + 1}</div>
+
+            {col.map((card) => (
+              <PlayingCard key={card.code} card={card} />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

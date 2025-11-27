@@ -19,7 +19,7 @@ export default function RevealScreen() {
         <>
           <img
             src={finalCard.image}
-            className="mb-10 w-[200px] rounded-xl shadow-xl"
+            className="mb-10 w-[300px] rounded-xl shadow-xl"
             alt={finalCard.image}
           />
 
