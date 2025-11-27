@@ -50,7 +50,7 @@ export default function HomeScreen({ button, nextStep, fetchOnClick = false }: P
           if (fetchOnClick) useDeckStore.getState().fetchDeck();
           setStep(nextStep);
         }}
-        className="animate-bounce absolute bottom-40 left-1/2 -translate-x-1/2 rounded-xl bg-[#e1c9ab] font-subtitle px-6 py-4 text-lg sm:top-1/2 sm:bottom-auto sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2"
+        className="font-subtitle absolute bottom-40 left-1/2 -translate-x-1/2 animate-bounce rounded-xl bg-[#e1c9ab] px-6 py-4 text-lg sm:top-1/2 sm:bottom-auto sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2"
       >
         {button}
       </button>

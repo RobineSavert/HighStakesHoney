@@ -1,27 +1,25 @@
 @import 'tailwindcss';
 
 @font-face {
-    font-family: 'ThistailsSans';
-    src: url('./assets/fonts/ThistailsSans_Demo-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'ThistailsSans';
+  src: url('./assets/fonts/ThistailsSans_Demo-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Holy Mary';
-    src: url('./assets/fonts/HolyMary.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Holy Mary';
+  src: url('./assets/fonts/HolyMary.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @theme {
-    --font-header: 'Holy Mary', cursive;
-    --font-subtitle: 'ThistailsSans', sans-serif;
+  --font-header: 'Holy Mary', cursive;
+  --font-subtitle: 'ThistailsSans', sans-serif;
 }
-
-
 
 @keyframes letterReveal {
   0% {
@@ -52,7 +50,6 @@
 .animate-fadeUp {
   animation: fadeUp 0.6s ease-out forwards;
 }
-
 
 @keyframes screenFade {
   0% {

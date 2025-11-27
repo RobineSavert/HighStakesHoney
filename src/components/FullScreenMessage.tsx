@@ -1,9 +1,9 @@
 import { useDeckStore } from '../stores/useDeckStore.ts';
 import { useWizardStore } from '../stores/useWizardStore.ts';
-import cornerSuitHearts from "../assets/images/corner-suit-hearts.webp";
-import cornerSuitDiamonds from "../assets/images/corner-suit-diamonds.webp";
-import cornerSuitClubs from "../assets/images/corner-suit-clubs.webp";
-import cornerSuitSpades from "../assets/images/corner-suit-spades.webp";
+import cornerSuitHearts from '../assets/images/corner-suit-hearts.webp';
+import cornerSuitDiamonds from '../assets/images/corner-suit-diamonds.webp';
+import cornerSuitClubs from '../assets/images/corner-suit-clubs.webp';
+import cornerSuitSpades from '../assets/images/corner-suit-spades.webp';
 
 interface Props {
   title: string;
@@ -26,19 +26,17 @@ export default function FullScreenMessage({
 
   return (
     <div
-      className="relative animate-screenFade flex min-h-[100svh] w-full flex-col items-center justify-center bg-size-[auto_20px] bg-center bg-repeat p-4"
+      className="animate-screenFade relative flex min-h-[100svh] w-full flex-col items-center justify-center bg-size-[auto_20px] bg-center bg-repeat p-4"
       style={{
         backgroundImage: `url(${backgroundImage})`,
       }}
     >
-        <img src={cornerSuitHearts} className="absolute top-6 left-6 w-10" />
-        <img src={cornerSuitDiamonds} className="absolute top-6 right-6 w-10" />
-        <img src={cornerSuitClubs} className="absolute bottom-6 left-6 w-10" />
-        <img src={cornerSuitSpades} className="absolute right-6 bottom-6 w-10" />
-      <div className=" w-full max-w-[90%] rounded-2xl border-8 border-[#c98a27] bg-black p-6 text-center text-[#feefdc] sm:max-w-xl sm:p-10 lg:max-w-2xl lg:p-14">
-
-
-          <h1 className="font-header mb-6 flex flex-wrap justify-center gap-[0.05em] text-3xl  sm:text-5xl lg:text-6xl">
+      <img src={cornerSuitHearts} className="absolute top-6 left-6 w-10" />
+      <img src={cornerSuitDiamonds} className="absolute top-6 right-6 w-10" />
+      <img src={cornerSuitClubs} className="absolute bottom-6 left-6 w-10" />
+      <img src={cornerSuitSpades} className="absolute right-6 bottom-6 w-10" />
+      <div className="w-full max-w-[90%] rounded-2xl border-8 border-[#c98a27] bg-black p-6 text-center text-[#feefdc] sm:max-w-xl sm:p-10 lg:max-w-2xl lg:p-14">
+        <h1 className="font-header mb-6 flex flex-wrap justify-center gap-[0.05em] text-3xl sm:text-5xl lg:text-6xl">
           {title.split('').map((char, i) => (
             <span
               key={i}
@@ -65,7 +63,7 @@ export default function FullScreenMessage({
             }
             setStep(nextStep);
           }}
-          className="rounded-xl bg-[#1d4e50] px-5 py-3 text-base uppercase font-subtitle sm:text-lg animate-bounce"
+          className="font-subtitle animate-bounce rounded-xl bg-[#1d4e50] px-5 py-3 text-base uppercase sm:text-lg"
           style={{ animationDelay: `${title.length * 40 + 600}ms` }}
         >
           {button}

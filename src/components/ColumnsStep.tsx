@@ -6,7 +6,6 @@ import { useImagesLoaded } from '../hooks/useImagesLoaded';
 import Loading from './Loading';
 import bgPaper from '../assets/images/bg-paper.webp';
 
-
 interface Props {
   stepNumber: number;
 }
@@ -33,9 +32,10 @@ export default function ColumnsStep({ stepNumber }: Props) {
   }
 
   return (
-      <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-cover bg-center"
-           style={{ backgroundImage: `url(${bgPaper})` }}>
-
+    <div
+      className="flex min-h-screen flex-col items-center justify-center bg-cover bg-center p-4"
+      style={{ backgroundImage: `url(${bgPaper})` }}
+    >
       <div className="flex w-full max-w-[1200px] justify-center gap-4 sm:gap-6 lg:gap-10">
         {columns.map((col, colIndex) => (
           <div
@@ -43,7 +43,7 @@ export default function ColumnsStep({ stepNumber }: Props) {
             onClick={() => handleClick(colIndex)}
             className="flex w-full max-w-[33%] cursor-pointer flex-col items-center gap-2 rounded-xl p-2 transition hover:scale-105 hover:bg-white/5 sm:gap-3 sm:p-4"
           >
-            <div className="mb-10 font-subtitle text-sm sm:text-[25px] text-black/60">
+            <div className="font-subtitle mb-10 text-sm text-black/60 sm:text-[25px]">
               Column {colIndex + 1}
             </div>
 

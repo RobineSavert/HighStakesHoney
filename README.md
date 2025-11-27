@@ -7,4 +7,9 @@ A Vite + React + TypeScript card game for the bold ones!
 1. npm install
 2. npm run dev
 
-ENJOY
+
+# Screenshot
+
+![Preview](assets/images/highstakeshoney.webp)
+
+# ENJOY
