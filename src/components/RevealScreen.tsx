@@ -34,7 +34,7 @@ export default function RevealScreen() {
           <>
             <img
               src={finalCard.image}
-              className="mx-auto mb-12 w-[180px] rounded-xl shadow-[0_10px_35px_rgba(0,0,0,0.5)] sm:w-[220px]"
+              className="mx-auto mb-12 w-[120px] sm:w-[180px] rounded-xl shadow-[0_10px_35px_rgba(0,0,0,0.5)]"
               alt={finalCard.image}
             />
 
