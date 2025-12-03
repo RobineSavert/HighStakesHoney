@@ -41,7 +41,7 @@ export default function ColumnsStep({ stepNumber }: Props) {
           <div
             key={colIndex}
             onClick={() => handleClick(colIndex)}
-            className="flex w-full max-w-[33%] cursor-pointer flex-col items-center gap-2 rounded-xl p-2 transition hover:scale-105 hover:bg-white/5 sm:gap-3 sm:p-4"
+            className="flex w-full mb-15 max-w-[33%] cursor-pointer flex-col items-center gap-2 rounded-xl p-2 transition hover:bg-white/25 sm:gap-3 sm:p-4"
           >
             <div className="font-subtitle mb-10 text-sm text-black/60 sm:text-[25px]">
               Column {colIndex + 1}

@@ -44,7 +44,7 @@ export default function App() {
       return (
         <FullScreenMessage
           title="Almost there!"
-          text="Pick the column where your card is now."
+          text="Pick the column where your card is now.."
           button="Continue"
           nextStep={6}
           backgroundImage={bgStripes}
