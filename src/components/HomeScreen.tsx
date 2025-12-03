@@ -5,10 +5,8 @@ import stripes from '../assets/images/stripes.webp';
 import shoes from '../assets/images/shoes.webp';
 import cards from '../assets/images/cards.webp';
 import text from '../assets/images/text.webp';
-import cornerSuitSpades from '../assets/images/corner-suit-spades.webp';
-import cornerSuitClubs from '../assets/images/corner-suit-clubs.webp';
-import cornerSuitHearts from '../assets/images/corner-suit-hearts.webp';
-import cornerSuitDiamonds from '../assets/images/corner-suit-diamonds.webp';
+import CornerSuits from "./CornerSuits.tsx";
+
 
 interface Props {
   button: string;
@@ -29,10 +27,7 @@ export default function HomeScreen({ button, nextStep, fetchOnClick = false }: P
         style={{ backgroundImage: `url(${shoes})` }}
       />
 
-      <img src={cornerSuitHearts} className="absolute top-6 left-6 w-10" />
-      <img src={cornerSuitDiamonds} className="absolute top-6 right-6 w-10" />
-      <img src={cornerSuitClubs} className="absolute bottom-6 left-6 w-10" />
-      <img src={cornerSuitSpades} className="absolute right-6 bottom-6 w-10" />
+      <CornerSuits />
 
       <img
         src={cards}

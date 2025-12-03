@@ -1,10 +1,7 @@
 import { useDeckStore } from '../stores/useDeckStore';
 import { useWizardStore } from '../stores/useWizardStore';
 import bgReveal from '../assets/images/bg-reveal.webp';
-import cornerSuitHearts from '../assets/images/corner-suit-hearts.webp';
-import cornerSuitDiamonds from '../assets/images/corner-suit-diamonds.webp';
-import cornerSuitClubs from '../assets/images/corner-suit-clubs.webp';
-import cornerSuitSpades from '../assets/images/corner-suit-spades.webp';
+import CornerSuits from "./CornerSuits.tsx";
 
 export default function RevealScreen() {
   const finalCard = useDeckStore((s) => s.finalCard);
@@ -21,11 +18,8 @@ export default function RevealScreen() {
       className="flex min-h-screen flex-col items-center justify-center bg-cover bg-center p-4"
       style={{ backgroundImage: `url(${bgReveal})` }}
     >
-      <img src={cornerSuitHearts} className="absolute top-6 left-6 w-10" />
-      <img src={cornerSuitDiamonds} className="absolute top-6 right-6 w-10" />
-      <img src={cornerSuitClubs} className="absolute bottom-6 left-6 w-10" />
-      <img src={cornerSuitSpades} className="absolute right-6 bottom-6 w-10" />
-      <div className="relative z-10 mx-auto w-full max-w-xl rounded-2xl border-8 border-[#c98a27] bg-black/80 px-8 py-10 text-center text-[#feefdc] shadow-2xl sm:max-w-2xl sm:px-14 sm:py-16">
+        <CornerSuits />
+       <div className="relative z-10 mx-auto w-full max-w-xl rounded-2xl border-8 border-[#c98a27] bg-black/80 px-8 py-10 text-center text-[#feefdc] shadow-2xl sm:max-w-2xl sm:px-14 sm:py-16">
         <h1 className="font-header mb-10 text-5xl leading-none sm:text-6xl lg:text-7xl">
           Your card was…
         </h1>
